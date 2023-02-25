@@ -1,4 +1,4 @@
-// +build windows
+//go:build windows
 
 package uilive
 
@@ -7,7 +7,6 @@ import (
 	"strings"
 	"syscall"
 	"unsafe"
-	"github.com/mattn/go-isatty"
 )
 
 var kernel32 = syscall.NewLazyDLL("kernel32.dll")
