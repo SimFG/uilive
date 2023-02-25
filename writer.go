@@ -7,6 +7,8 @@ import (
 	"os"
 	"sync"
 	"time"
+
+	"github.com/mattn/go-runewidth"
 )
 
 // ESC is the ASCII code for escape character
@@ -90,7 +92,7 @@ func (w *Writer) Flush() error {
 			lines++
 			currentLine.Reset()
 		} else {
-			if overFlowHandled && currentLine.Len() >= termWidth {
+			if overFlowHandled && runewidth.StringWidth(currentLine.String()) > termWidth {
 				lines++
 				currentLine.Reset()
 			}
